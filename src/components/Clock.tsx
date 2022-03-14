@@ -1,68 +1,64 @@
+import React from "react";
+import { Default } from "../AppStyle";
 import styled from "styled-components";
 import { useState, useEffect } from "react";
+import useLocalStorage from "use-local-storage";
 
-const Clock = () => {
-  const [hours, setHours] = useState(0);
-  const [minutes, setMinutes] = useState<any>("00");
-  const [ampm, setampm] = useState<any>("AM");
-  const [dayweek, setDayWeek] = useState<any>("");
-  const [month, setMonth] = useState<any>("");
-  const [day, setDay] = useState<string | number>("");
+const Clock: React.FC = () => {
+  // eslint-disable-next-line
+  const [clockFormat, setClockFormat] = useLocalStorage<boolean>(
+    "clock-format-12",
+    true ? false : true
+  );
+  let date = new Date();
+  let checkHour: any;
+  if (clockFormat && date.getHours() > 12) {
+    checkHour = date.getHours() - 12;
+  } else if (clockFormat && date.getHours() === 0) {
+    checkHour = 12;
+  } else {
+    checkHour = date.getHours();
+  }
+  const [hours, setHours] = useState<any>(checkHour);
+  const [minutes, setMinutes] = useState<any>(
+    date.getMinutes() < 10 ? `0${date.getMinutes()}` : date.getMinutes()
+  );
+  const [ampm, setampm] = useState<any>(date.getHours() >= 12 ? "PM" : "AM");
+
   useEffect(() => {
     const intervalId = setInterval(() => {
       let date = new Date();
-      let hh: string | number = date.getHours();
-      let mm: string | number = date.getMinutes();
-      let day: string | number = date.getDate();
-      let dayweek = date.getDay();
-      let month = date.getMonth();
-      let ampm: any;
+      let hh: any = date.getHours();
+      let mm: any = date.getMinutes();
+      let ampm: any = hh >= 12 ? "PM" : "AM";
 
-      if (hh >= 12) {
-        hh = hh - 12;
-        ampm = "PM";
-      } else {
-        ampm = "AM";
-      }
-
-      if (hh == 0) {
-        hh = 12;
+      if (clockFormat) {
+        if (hh > 12) {
+          hh = hh - 12;
+        } else if (hh === 0) {
+          hh = 12;
+        }
       }
 
       if (mm < 10) {
         mm = `0${mm}`;
       }
-      let week = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-      let months = [
-        "Jan",
-        "Feb",
-        "Mar",
-        "Apr",
-        "May",
-        "Jun",
-        "Jul",
-        "Aug",
-        "Sep",
-        "Oct",
-        "Nov",
-        "Dec",
-      ];
-      setDay(day);
-      setMonth(months[month]);
-      setDayWeek(week[dayweek]);
       setHours(hh);
       setMinutes(mm);
       setampm(ampm);
     }, 1000);
 
     return () => clearInterval(intervalId);
+    // eslint-disable-next-line
   }, []);
   return (
     <ClockContainer>
-      <ClockTime>
-        {hours}:{minutes}
-        <ClockAmPm>{ampm}</ClockAmPm>
-      </ClockTime>
+      <Default>
+        <ClockTime>
+          {hours}:{minutes}
+          {clockFormat ? <ClockAmPm>{ampm}</ClockAmPm> : ""}
+        </ClockTime>
+      </Default>
     </ClockContainer>
   );
 };
@@ -71,7 +67,10 @@ const ClockContainer = styled.div`
   flex: 0.15;
   display: flex;
   align-items: center;
+  justify-content: center;
+  color: var(--fontColor);
   font-family: Poppins;
+  transition: all 500ms ease-in-out;
 `;
 const ClockTime = styled.div`
   font-size: 98px;
@@ -79,8 +78,6 @@ const ClockTime = styled.div`
   cursor: default;
   user-select: none;
   text-shadow: 3px 3px 8px #00000033;
-  color: var(--fontColor);
-  transition: all 500ms ease-in-out;
 `;
 const ClockAmPm = styled(ClockTime)`
   font-size: 16px;

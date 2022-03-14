@@ -1,25 +1,25 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
-  "icons": [
-    {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
-    },
-    {
-      "src": "logo192.png",
-      "type": "image/png",
-      "sizes": "192x192"
-    },
-    {
-      "src": "logo512.png",
-      "type": "image/png",
-      "sizes": "512x512"
-    }
-  ],
-  "start_url": ".",
-  "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "manifest_version": 2,
+  "name": "Idiono",
+  "short_name": "Idiono",
+  "version": "1.0.1",
+  "description": "Replace new tab page with a personal dashboard featuring to-do, weather, and inspiration.",
+  "icons": {
+    "16": "logo/idiono-16.png",
+    "32": "logo/idiono-32.png",
+    "48": "logo/idiono-48.png",
+    "128": "logo/idiono-128.png"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_security_policy": "script-src 'self'; object-src 'self'",
+  "chrome_url_overrides": {
+    "newtab": "index.html"
+  },
+  "offline_enabled": true,
+  "browser_action": {
+    "default_title": "Idiono"
+  },
+  "optional_permissions": ["bookmarks", "topSites", "chrome://favicon/"]
 }

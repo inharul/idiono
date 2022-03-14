@@ -1,12 +1,12 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
-
 :root {
   --background: #ffff;
   --fontColor: #282c34;
+  --borderBottom: #eee;
 }
 [data-theme="dark"] {
   --background: #282c34;
   --fontColor: #ffff;
+  --borderBottom: #383838;
 }
 
 * {
@@ -14,11 +14,13 @@
   padding: 0;
   box-sizing: border-box;
 }
-
+input[type="file"] {
+  display: none;
+}
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir,
+    helvetica neue, helvetica, ubuntu, segoe ui, sans-serif;
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -28,13 +30,7 @@ code {
     monospace;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+@font-face {
+  font-family: Poppins;
+  src: url(font/Poppins.ttf);
 }
