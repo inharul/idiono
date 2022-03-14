@@ -11,6 +11,8 @@ import settingsdark from "./img/settings-dark.svg";
 import settingslight from "./img/settings-light.svg";
 import yt from "./img/youtube.svg";
 import dc from "./img/discord.svg";
+import pomodark from "./img/timerdark.svg";
+import pomolight from "./img/timerlight.svg";
 
 import {
   AppContainer,
@@ -18,6 +20,7 @@ import {
   BackgroundGradient,
   BackgroundImage,
   Default,
+  PomodoroToggler,
   SetBackground,
   Settings,
   SettingsDropdown,
@@ -51,10 +54,11 @@ function App() {
   );
   const [showPomodoro, setShowPomodoro] = useLocalStorage<boolean>(
     "show-pomodoro",
-    true
+    false
   );
 
   const [settingsOpen, setSettingsOpen] = useState(false);
+  const [showTimer, setShowTimer] = useState(false);
   return (
     <AppMain data-theme={theme}>
       {backgroundData !== "none" ? (
@@ -67,7 +71,7 @@ function App() {
       )}
       <AppContainer>
         <Clock />
-        {showPomodoro && <Pomodoro />}
+        {showTimer && <Pomodoro />}
       </AppContainer>
       <ThemeToggler
         onClick={() => {
@@ -81,6 +85,16 @@ function App() {
           <img draggable={false} src={sun} alt="sun" />
         )}
       </ThemeToggler>
+      {showPomodoro && (
+        <PomodoroToggler onClick={() => setShowTimer(!showTimer)}>
+          {theme === "light" ? (
+            <img draggable={false} src={pomodark} alt="timer" />
+          ) : (
+            <img draggable={false} src={pomolight} alt="timer" />
+          )}
+        </PomodoroToggler>
+      )}
+
       {showDateTime && <DateTime />}
       <UpdateBackground>
         <label htmlFor="file-upload">
@@ -149,11 +163,12 @@ function App() {
               />
             </SettingsOption>
             <SettingsOption>
-              <label>Pomodoro Mode</label>
+              <label>Pomodoro</label>
               <Switch
                 size="small"
                 checked={showPomodoro}
                 onClick={() => {
+                  setShowTimer(false);
                   setShowPomodoro(!showPomodoro);
                 }}
               />

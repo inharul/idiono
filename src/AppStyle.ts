@@ -50,6 +50,20 @@ export const ThemeToggler = styled.button`
     height: 24px;
   }
 `;
+export const PomodoroToggler = styled.button`
+  outline: none;
+  user-select: none;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  position: absolute;
+  left: 20px;
+  top: 20px;
+  img {
+    width: 24px;
+    height: 24px;
+  }
+`;
 export const Settings = styled.button`
   outline: none;
   user-select: none;
