@@ -36,8 +36,17 @@ export const AppContainer = styled.div`
   font-size: calc(10px + 2vmin);
 `;
 
+export const SearchForm = styled.form`
+  flex: 0.05;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  transition: all ease-in-out 500ms;
+`;
+
 export const ThemeToggler = styled.button`
   outline: none;
+  z-index: 10;
   cursor: pointer;
   user-select: none;
   border: none;
@@ -52,6 +61,7 @@ export const ThemeToggler = styled.button`
 `;
 export const PomodoroToggler = styled.button`
   outline: none;
+  z-index: 10;
   user-select: none;
   border: none;
   background: transparent;
@@ -67,6 +77,7 @@ export const PomodoroToggler = styled.button`
 export const Settings = styled.button`
   outline: none;
   user-select: none;
+  z-index: 10;
   border: none;
   background: transparent;
   cursor: pointer;
@@ -80,6 +91,7 @@ export const Settings = styled.button`
 `;
 export const SettingsDropdown = styled.div`
   position: absolute;
+  z-index: 10;
   width: 300px;
   padding: 20px;
   color: #fff;
@@ -101,6 +113,7 @@ export const SettingsDropdown = styled.div`
 `;
 export const SetBackground = styled.button`
   outline: none;
+  z-index: 10;
   color: #fff;
   user-select: none;
   border: none;
@@ -139,6 +152,7 @@ export const SettingsFooter = styled.footer`
 `;
 export const UpdateBackground = styled.div`
   user-select: none;
+  z-index: 10;
   background: transparent;
   position: absolute;
   bottom: 20px;

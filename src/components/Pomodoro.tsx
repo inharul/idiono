@@ -129,6 +129,7 @@ const Pomodoro: React.FC = () => {
 const PomodoroOverlay = styled.div`
   font-family: Poppins;
   width: 100vw;
+  z-index: 2;
   color: var(--fontColor);
   text-align: center;
   height: 100vh;

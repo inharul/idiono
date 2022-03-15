@@ -21,6 +21,7 @@ import {
   BackgroundImage,
   Default,
   PomodoroToggler,
+  SearchForm,
   SetBackground,
   Settings,
   SettingsDropdown,
@@ -30,11 +31,13 @@ import {
   UpdateBackground,
 } from "./AppStyle";
 import DateTime from "./components/DateTime";
-import { Switch } from "antd";
+import { Select, Switch } from "antd";
 import Pomodoro from "./components/Pomodoro";
+import Search from "./components/Search";
 
 function App() {
   let date = new Date();
+  const Option = Select.Option;
   const [theme, setTheme] = useLocalStorage(
     "theme",
     "light" ? "dark" : "light"
@@ -48,6 +51,14 @@ function App() {
     true ? false : true
   );
 
+  const [showSearch, setShowSearch] = useLocalStorage<boolean>(
+    "show-search",
+    false
+  );
+  const [searchEngine, setSearchEngine] = useLocalStorage<string>(
+    "search-url",
+    "https://www.google.com/search"
+  );
   const [showDateTime, setShowDateTime] = useLocalStorage<boolean>(
     "show-date-time",
     false
@@ -72,6 +83,9 @@ function App() {
       <AppContainer>
         <Clock />
         {showTimer && <Pomodoro />}
+        <SearchForm action={searchEngine} method="GET">
+          {showSearch && <Search />}
+        </SearchForm>
       </AppContainer>
       <ThemeToggler
         onClick={() => {
@@ -153,6 +167,16 @@ function App() {
               />
             </SettingsOption>
             <SettingsOption>
+              <label>Search</label>
+              <Switch
+                size="small"
+                checked={showSearch}
+                onClick={() => {
+                  setShowSearch(!showSearch);
+                }}
+              />
+            </SettingsOption>
+            <SettingsOption>
               <label>Date & Time</label>
               <Switch
                 size="small"
@@ -173,7 +197,20 @@ function App() {
                 }}
               />
             </SettingsOption>
-
+            <SettingsOption>
+              <label>Search Engine</label>
+              <Select
+                defaultValue={searchEngine}
+                style={{ width: 120, fontSize: "13px", background: "0000004d" }}
+                onChange={(value) => {
+                  setSearchEngine(value);
+                }}
+              >
+                <Option value="https://www.google.com/search">Google</Option>
+                <Option value="https://www.bing.com/search">Bing</Option>
+                <Option value="https://www.duckduckgo.com/">DuckDuckGo</Option>
+              </Select>
+            </SettingsOption>
             <Default align="center" margin="10px 0 0 0">
               <SetBackground
                 role="button"
