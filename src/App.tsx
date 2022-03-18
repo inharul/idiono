@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import useLocalStorage from "use-local-storage";
 import Clock from "./components/Clock";
 import swal from "sweetalert";
@@ -13,8 +13,14 @@ import yt from "./img/youtube.svg";
 import dc from "./img/discord.svg";
 import pomodark from "./img/timerdark.svg";
 import pomolight from "./img/timerlight.svg";
+import plus from "./img/plus.svg";
 
 import {
+  AddShortcut,
+  AddShortcutForm,
+  AddTile,
+  AddTileIcon,
+  AddTileText,
   AppContainer,
   AppMain,
   BackgroundGradient,
@@ -27,17 +33,48 @@ import {
   SettingsDropdown,
   SettingsFooter,
   SettingsOption,
+  Shortcuts,
   ThemeToggler,
   UpdateBackground,
 } from "./AppStyle";
 import DateTime from "./components/DateTime";
-import { Select, Switch } from "antd";
+import { Button, Drawer, Input, Select, Switch } from "antd";
 import Pomodoro from "./components/Pomodoro";
 import Search from "./components/Search";
+
+const getShortcuts = () => {
+  const data = localStorage.getItem("shortcuts");
+  if (data) {
+    return JSON.parse(data);
+  } else {
+    return [];
+  }
+};
 
 function App() {
   let date = new Date();
   const Option = Select.Option;
+  const [shortcuts, setShortcuts] = useState(getShortcuts);
+  const [shortcutTitle, setShortcutTitle] = useState("");
+  const [shortcutLink, setShortcutLink] = useState("");
+  const handleAddShortcutSubmit = (e: any) => {
+    e.preventDefault();
+    let newShortcut = {
+      title: shortcutTitle,
+      icon:
+        "chrome://favicon2/?size=24&scale_factor=1x&show_fallback_monogram=&page_url=" +
+        shortcutLink,
+      link: shortcutLink,
+    };
+    setShortcuts([...shortcuts, newShortcut]);
+    setShortcutTitle("");
+    setShortcutLink("");
+    setshowAdder(false);
+  };
+  useEffect(() => {
+    localStorage.setItem("shortcuts", JSON.stringify(shortcuts));
+  }, [shortcuts]);
+
   const [theme, setTheme] = useLocalStorage(
     "theme",
     "light" ? "dark" : "light"
@@ -70,6 +107,7 @@ function App() {
 
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [showTimer, setShowTimer] = useState(false);
+  const [showAdder, setshowAdder] = useState(false);
   return (
     <AppMain data-theme={theme}>
       {backgroundData !== "none" ? (
@@ -86,6 +124,57 @@ function App() {
         <SearchForm action={searchEngine} method="GET">
           {showSearch && <Search />}
         </SearchForm>
+        <Drawer
+          style={{ fontFamily: "Roboto" }}
+          title="Add a Shortcut"
+          width={380}
+          onClose={() => setshowAdder(false)}
+          visible={showAdder}
+          bodyStyle={{ paddingBottom: 80 }}
+        >
+          <AddShortcutForm
+            autoComplete="off"
+            onSubmit={handleAddShortcutSubmit}
+          >
+            <Input
+              placeholder="Name"
+              required
+              value={shortcutTitle}
+              onChange={(e) => {
+                setShortcutTitle(e.currentTarget.value);
+              }}
+            />
+            <Input
+              type="url"
+              placeholder="https://site.domain"
+              required
+              value={shortcutLink}
+              onChange={(e) => {
+                setShortcutLink(e.currentTarget.value);
+              }}
+            />
+            <Button
+              type="primary"
+              htmlType="submit"
+              style={{ borderRadius: "7px", marginTop: "10px" }}
+            >
+              Add
+            </Button>
+          </AddShortcutForm>
+        </Drawer>
+        <Shortcuts>
+          <AddShortcut>
+            <AddTile onClick={() => setshowAdder(true)}>
+              <AddTileIcon>
+                <img src={plus} alt="plus" draggable={false} />
+              </AddTileIcon>
+              <AddTileText>
+                <p>Add Shortcut</p>
+              </AddTileText>
+            </AddTile>
+          </AddShortcut>
+          {/* other shortcuts */}
+        </Shortcuts>
       </AppContainer>
       <ThemeToggler
         onClick={() => {
@@ -205,10 +294,13 @@ function App() {
                 onChange={(value) => {
                   setSearchEngine(value);
                 }}
+                disabled={!showSearch}
               >
                 <Option value="https://www.google.com/search">Google</Option>
                 <Option value="https://www.bing.com/search">Bing</Option>
+
                 <Option value="https://www.duckduckgo.com/">DuckDuckGo</Option>
+                <Option value="https://www.youtube.com/search">YouTube</Option>
               </Select>
             </SettingsOption>
             <Default align="center" margin="10px 0 0 0">

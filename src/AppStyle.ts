@@ -43,7 +43,97 @@ export const SearchForm = styled.form`
   align-items: center;
   transition: all ease-in-out 500ms;
 `;
+export const Shortcuts = styled.div`
+  overflow: hidden;
+  color: var(--fontColor);
+  padding: 2em;
+  height: 288px;
+  width: 870px;
 
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  grid-gap: 1em;
+
+  span {
+    border: 1px solid var(--fontColor);
+    height: 112px;
+    min-width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+`;
+export const AddShortcut = styled.div`
+  height: 110px;
+  min-width: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+export const Tile = styled.div`
+  height: 110px;
+  min-width: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  span {
+    height: 100%;
+    outline: none;
+    cursor: pointer;
+    padding: 10px 15px;
+    background: transparent;
+    border: none;
+    border-radius: 10px;
+    width: auto;
+    transition: all ease-in-out 10ms;
+    :hover {
+      background: #f1f3f41f;
+    }
+  }
+`;
+export const AddTile = styled.button`
+  height: 100%;
+  outline: none;
+  cursor: pointer;
+  padding: 10px 15px;
+  background: transparent;
+  border: none;
+  border-radius: 10px;
+  width: auto;
+  transition: all ease-in-out 10ms;
+  :hover {
+    background: #f1f3f41f;
+  }
+`;
+export const AddTileIcon = styled.div`
+  padding: 10px;
+  margin: 1px 10px 10px 10px;
+  border-radius: 15px;
+  background: #fff;
+  img {
+    user-select: none;
+    height: 24px;
+    width: 24px;
+    margin: 7px;
+  }
+`;
+export const AddTileText = styled.div`
+  p {
+    margin: 0;
+    font-family: Roboto, "Segoe UI", Tahoma, sans-serif;
+    font-size: 13px;
+  }
+`;
+export const AddShortcutForm = styled.form`
+  font-family: Roboto, "Segoe UI", Tahoma, sans-serif;
+  input {
+    margin-bottom: 10px;
+    padding: 8px 13px;
+    background: #f1f2f1;
+    width: 100%;
+    border-radius: 8px;
+  }
+`;
 export const ThemeToggler = styled.button`
   outline: none;
   z-index: 10;

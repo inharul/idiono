@@ -28,7 +28,8 @@ const SearchBar = styled.div`
     margin-right: 7px;
   }
   input {
-    background: transparents;
+    background: transparent;
+    font-family: Roboto, "Segoe UI", Tahoma, sans-serif;
     border: none;
     outline: none;
     width: 100%;

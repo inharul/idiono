@@ -34,3 +34,7 @@ code {
   font-family: Poppins;
   src: url(font/Poppins.ttf);
 }
+@font-face {
+  font-family: Roboto;
+  src: url(font/Roboto.ttf);
+}
