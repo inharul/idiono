@@ -40,9 +40,10 @@ There are many ways in which you can participate in this project, for example:
 
 -   Submit bugs and feature requests, and by testing our extension
 -   Review  [source code changes](https://github.com/inharul/idiono/pulls)
+-   Use our extension and support the project!
 -   You can even review the  documentation and make pull requests for anything from typos to additional and new content
 
-Contributers are advised to join the our [Discord server](https://discord.gg/eTqJ65vUV9) before making a Pull Request and can freely talk about their thoughts and We'll look them and give our best to help you out!
+Contributers are advised to join our [Discord server](https://discord.gg/eTqJ65vUV9) before making a Pull Request and can freely talk about their thoughts and We'll look them and give our best to help you out!
 ## License
 Copyright (c) Inharul. All rights reserved.
 
