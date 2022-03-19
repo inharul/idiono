@@ -41,6 +41,7 @@ import DateTime from "./components/DateTime";
 import { Button, Drawer, Input, Select, Switch } from "antd";
 import Pomodoro from "./components/Pomodoro";
 import Search from "./components/Search";
+import Shortcut from "./components/Shortcut";
 
 const getShortcuts = () => {
   const data = localStorage.getItem("shortcuts");
@@ -61,15 +62,19 @@ function App() {
     e.preventDefault();
     let newShortcut = {
       title: shortcutTitle,
-      icon:
-        "chrome://favicon2/?size=24&scale_factor=1x&show_fallback_monogram=&page_url=" +
-        shortcutLink,
+      icon: "chrome://favicon/size/24@1x/" + shortcutLink,
       link: shortcutLink,
     };
     setShortcuts([...shortcuts, newShortcut]);
     setShortcutTitle("");
     setShortcutLink("");
     setshowAdder(false);
+  };
+  const deleteShortcut = (link: any) => {
+    const filteredShortcuts = shortcuts.filter((element: any, index: any) => {
+      return element.link !== link;
+    });
+    setShortcuts(filteredShortcuts);
   };
   useEffect(() => {
     localStorage.setItem("shortcuts", JSON.stringify(shortcuts));
@@ -85,12 +90,12 @@ function App() {
   );
   const [clockFormat, setClockFormat] = useLocalStorage<boolean>(
     "clock-format-12",
-    true ? false : true
+    true
   );
 
   const [showSearch, setShowSearch] = useLocalStorage<boolean>(
     "show-search",
-    false
+    true
   );
   const [searchEngine, setSearchEngine] = useLocalStorage<string>(
     "search-url",
@@ -102,7 +107,7 @@ function App() {
   );
   const [showPomodoro, setShowPomodoro] = useLocalStorage<boolean>(
     "show-pomodoro",
-    false
+    true
   );
 
   const [settingsOpen, setSettingsOpen] = useState(false);
@@ -163,6 +168,9 @@ function App() {
           </AddShortcutForm>
         </Drawer>
         <Shortcuts>
+          {shortcuts.length > 0 && (
+            <Shortcut items={shortcuts} deleteShortcut={deleteShortcut} />
+          )}
           <AddShortcut>
             <AddTile onClick={() => setshowAdder(true)}>
               <AddTileIcon>
@@ -173,7 +181,6 @@ function App() {
               </AddTileText>
             </AddTile>
           </AddShortcut>
-          {/* other shortcuts */}
         </Shortcuts>
       </AppContainer>
       <ThemeToggler

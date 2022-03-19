@@ -8,7 +8,7 @@ const Clock: React.FC = () => {
   // eslint-disable-next-line
   const [clockFormat, setClockFormat] = useLocalStorage<boolean>(
     "clock-format-12",
-    true ? false : true
+    true
   );
   let date = new Date();
   let checkHour: any;

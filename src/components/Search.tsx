@@ -23,6 +23,7 @@ const SearchBar = styled.div`
   border-radius: var(--height);
   padding: 1px 20px;
   img {
+    user-select: none;
     width: 18px;
     height: 18px;
     margin-right: 7px;

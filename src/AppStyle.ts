@@ -44,6 +44,7 @@ export const SearchForm = styled.form`
   transition: all ease-in-out 500ms;
 `;
 export const Shortcuts = styled.div`
+  z-index: 1;
   overflow: hidden;
   color: var(--fontColor);
   padding: 2em;
@@ -70,27 +71,7 @@ export const AddShortcut = styled.div`
   align-items: center;
   justify-content: center;
 `;
-export const Tile = styled.div`
-  height: 110px;
-  min-width: 100px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  span {
-    height: 100%;
-    outline: none;
-    cursor: pointer;
-    padding: 10px 15px;
-    background: transparent;
-    border: none;
-    border-radius: 10px;
-    width: auto;
-    transition: all ease-in-out 10ms;
-    :hover {
-      background: #f1f3f41f;
-    }
-  }
-`;
+
 export const AddTile = styled.button`
   height: 100%;
   outline: none;
@@ -98,18 +79,20 @@ export const AddTile = styled.button`
   padding: 10px 15px;
   background: transparent;
   border: none;
+
   border-radius: 10px;
   width: auto;
   transition: all ease-in-out 10ms;
   :hover {
-    background: #f1f3f41f;
+    background: var(--tileback);
   }
 `;
 export const AddTileIcon = styled.div`
   padding: 10px;
+  box-shadow: 0 0 0 0 #fff;
   margin: 1px 10px 10px 10px;
   border-radius: 15px;
-  background: #fff;
+  background: var(--tilebox);
   img {
     user-select: none;
     height: 24px;

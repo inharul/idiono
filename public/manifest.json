@@ -2,8 +2,8 @@
   "manifest_version": 2,
   "name": "Idiono",
   "short_name": "Idiono",
-  "version": "1.0.1",
-  "description": "Replace new tab page with a personal dashboard featuring to-do, weather, and inspiration.",
+  "version": "1.0.6",
+  "description": "Replace your new tab with a better and simple one featuring built-in pomodoro, clock and more.",
   "icons": {
     "16": "logo/idiono-16.png",
     "32": "logo/idiono-32.png",
@@ -13,7 +13,7 @@
   "background": {
     "service_worker": "background.js"
   },
-  "content_security_policy": "script-src 'self'; object-src 'self'; img-src chrome://favicon;",
+  "content_security_policy": "script-src 'self'; object-src 'self';",
   "chrome_url_overrides": {
     "newtab": "index.html"
   },
@@ -21,9 +21,5 @@
   "browser_action": {
     "default_title": "Idiono"
   },
-  "permissions": [
-    "chrome://favicon/",
-    "chrome://favicon/*",
-    "chrome://favicon2/*"
-  ]
+  "permissions": ["chrome://favicon/", "chrome://favicon/*"]
 }

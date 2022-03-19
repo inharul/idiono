@@ -1,46 +1,48 @@
-# Getting Started with Create React App
+# Idiono
+An open source chromium-based extension, Which helps you replace your default new tab with a better and simple one.
+## How is this different?
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![idiono-preview](https://lh3.googleusercontent.com/pw/AM-JKLUF-uCkAntzHumG5uW1vICU8Cik1CptkNSPoFq-2-5TX3BKa-VoTvV2bfwBNpog45FGDbqe9J1Q8F_CPtFYoBXhvZe6SGDdr9Kcv9FcSZEBB0_FmZRBQDtFWuijdWN5vG_cd8KSlqlPUGtASWtCJHlp=w1920-h914-no?authuser=0)
 
-## Available Scripts
+**Idiono** is not just like the default new tab but more. We made it simple, easy-to-use, and similar to the default new tab for users to get familiar with it quickly. Not only shortcuts to navigate, search bar with different search engines, clock on the top but also featuring built-in pomorodo for productivity. As all chromium-browser use different default tabs, Idiono makes it the same everywhere. All your data is secured in your browser and we can't send this information anywhere.
 
-In the project directory, you can run:
+> Simple, To the point and Open source *is our promise.*
 
-### `yarn start`
+## Source Code
+The extension is made using [React](https://reactjs.org/) and [Typescript](https://www.typescriptlang.org/), If you are interested in learning we'll suggest taking a look at [React - TypeScript: Documentation](https://www.typescriptlang.org/docs/handbook/react.html).
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Ensure you have:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+-   [Node.js](https://nodejs.org/)  12 or later installed
+-   [Yarn](https://yarnpkg.com/)  installed (npm might work also, but this project uses yarn)
 
-### `yarn test`
+Just clone the code base and install the dependencies:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+    git clone https://github.com/inharul/idiono.git
+    cd idiono-master
+    yarn
 
-### `yarn build`
+After cloning the repository, run the local server by `yarn start` and start editing the code on your machine.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+> It's recommended to use Chrome for development.
+####   Load the extension for development
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1.  Enter  `chrome://extensions/`  as URL to open the Extension Manager.
+2.  Activate  `Development Mode`.
+3.  Hit the  `Load Unpacked`  button and navigate to  `<...>/idiono/build`, select  `chrome_unpacked`  and open it.
+4.  Open a new tab and look your changes.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+You can add features and more locally and if you think something could be added for the rest and it's relevant, We would love to know that in our [Discord server](https://discord.gg/eTqJ65vUV9) before making a Pull Request. Finally, make a production build by running `yarn build`.
+## Contributing
 
-### `yarn eject`
+There are many ways in which you can participate in this project, for example:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+-   Submit bugs and feature requests, and by testing our extension
+-   Review  [source code changes](https://github.com/inharul/idiono/pulls)
+-   You can even review the  documentation and make pull requests for anything from typos to additional and new content
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Contributers are advised to join the our [Discord server](https://discord.gg/eTqJ65vUV9) before making a Pull Request and can freely talk about their thoughts and We'll look them and give our best to help you out!
+## License
+Copyright (c) Inharul. All rights reserved.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Licensed under the MIT license.

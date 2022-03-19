@@ -2,11 +2,15 @@
   --background: #ffff;
   --fontColor: #282c34;
   --borderBottom: #eee;
+  --tileback: rgba(231, 228, 228, 0.349);
+  --tilebox: #c5c5c5;
 }
 [data-theme="dark"] {
   --background: #282c34;
   --fontColor: #ffff;
   --borderBottom: #383838;
+  --tileback: #f1f3f41f;
+  --tilebox: #fff;
 }
 
 * {
