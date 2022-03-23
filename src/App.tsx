@@ -143,6 +143,7 @@ function App() {
           >
             <Input
               placeholder="Name"
+              maxLength={11}
               required
               value={shortcutTitle}
               onChange={(e) => {
