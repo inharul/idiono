@@ -1,6 +1,5 @@
 # Idiono
-
-![idiono-preview](https://pbs.twimg.com/media/FUZmP5JagAAFv2G?format=jpg&name=large)
+![idiono-preview](https://user-images.githubusercontent.com/88318546/180630355-b4795422-8f5c-4e1c-81fc-5243b082bf66.png)
 
 An open source chromium-based extension, Which helps you replace your default new tab with a better and simple one.
 ## How is this different?
