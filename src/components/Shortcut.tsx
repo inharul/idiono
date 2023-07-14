@@ -14,7 +14,7 @@ interface Props {
 }
 
 const Shortcut: React.FC<Props> = ({ items, deleteShortcut }) => (
-  <React.Fragment>
+  <>
     {items.map((item: Shortcuts) => (
       <ShortcutContainer>
         <ShortcutTile>
@@ -36,7 +36,7 @@ const Shortcut: React.FC<Props> = ({ items, deleteShortcut }) => (
         </ShortcutTile>
       </ShortcutContainer>
     ))}
-  </React.Fragment>
+  </>
 );
 
 const ShortcutContainer = styled.div`

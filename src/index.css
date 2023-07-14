@@ -2,7 +2,7 @@
   --background: #ffff;
   --fontColor: #282c34;
   --borderBottom: #eee;
-  --tileback: rgba(231, 228, 228, 0.349);
+  --tileback: #e7e4e459;
   --tilebox: #c5c5c5;
 }
 [data-theme="dark"] {
