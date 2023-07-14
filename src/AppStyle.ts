@@ -103,6 +103,7 @@ export const AddTileIcon = styled.div`
 export const AddTileText = styled.div`
   p {
     margin: 0;
+    outline: none;
     font-family: Roboto, "Segoe UI", Tahoma, sans-serif;
     font-size: 13px;
   }

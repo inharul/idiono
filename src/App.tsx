@@ -71,7 +71,7 @@ function App() {
     setshowAdder(false);
   };
   const deleteShortcut = (link: any) => {
-    const filteredShortcuts = shortcuts.filter((element: any, index: any) => {
+    const filteredShortcuts = shortcuts.filter((element: any) => {
       return element.link !== link;
     });
     setShortcuts(filteredShortcuts);
@@ -134,7 +134,7 @@ function App() {
           title="Add a Shortcut"
           width={380}
           onClose={() => setshowAdder(false)}
-          visible={showAdder}
+          open={showAdder}
           bodyStyle={{ paddingBottom: 80 }}
         >
           <AddShortcutForm
