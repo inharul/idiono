@@ -19,7 +19,7 @@ Ensure you have:
 Just clone the code base and install the dependencies:
 
     git clone https://github.com/inharul/idiono.git
-    cd idiono-master
+    cd idiono
     yarn
 
 After cloning the repository, run the local server by `yarn start` and start editing the code on your machine.
@@ -30,7 +30,7 @@ After cloning the repository, run the local server by `yarn start` and start edi
 1.  Enter  `chrome://extensions/`  as URL to open the Extension Manager.
 2.  Activate  `Development Mode`.
 3.  Make a production build by running `yarn build`
-4.  Hit the  `Load Unpacked`  button and navigate to  `<...>/idiono-master/build`, select  `chrome_unpacked`  and open it.
+4.  Hit the  `Load Unpacked`  button and navigate to  `<...>/idiono/build`, select  `chrome_unpacked`  and open it.
 5.  Open a new tab and look your changes.
 
 You can add features and more locally and if you think something could be added for the rest and it's relevant, We would love to know that in our [Discord server](https://discord.gg/eTqJ65vUV9) before making a Pull Request.
